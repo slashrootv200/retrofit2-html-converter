@@ -19,11 +19,21 @@
 compile 'com.github.slashrootv200:retrofit-html-converter:0.0.1'
 ```
 ## Usage
+Service
+```java
+public interface CollectionsJavaDocWebPageService {
+  @GET("javase/7/docs/api/java/util/Collections.html")
+  Call<Document> fetch();
+}
+```
 Add converter to the `RetrofitBuilder`
 ```java
 Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl)
   .addConverterFactory(HtmlConverterFactory.create(baseUrl))
   .build();
+CollectionsJavaDocWebPageService service
+                      = retrofit.create(CollectionsJavaDocWebPageService.class);
+Call<Document> call = service.fetch();
 ```
 
 Get `Document` as a response object
@@ -35,7 +45,8 @@ call.enqueue(new Callback<Document>() {
   public void onResponse(Call<Document> call, Response<Document> response) {
     Document document = response.body();
     document.setBaseUri(base);
-    String html = document.html();
+    String html = document.html(); 
+    // contains the html of https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html
   }
 
   @Override
