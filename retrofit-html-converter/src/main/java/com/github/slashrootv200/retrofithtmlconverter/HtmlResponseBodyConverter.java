@@ -16,6 +16,10 @@ public class HtmlResponseBodyConverter implements Converter<ResponseBody, Docume
   @Override
   public Document convert(ResponseBody value) throws
       IOException {
-    return Jsoup.parse(value.byteStream(), "UTF-8", baseUrl);
+    try {
+      return Jsoup.parse(value.byteStream(), "UTF-8", baseUrl);
+    } finally {
+      value.close();
+    }
   }
 }
