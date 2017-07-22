@@ -9,14 +9,14 @@
 <dependency>
   <groupId>com.github.slashrootv200</groupId>
   <artifactId>retrofit-html-converter</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <type>pom</type>
 </dependency>
 ```
 
 ### gradle
 ```groovy
-compile 'com.github.slashrootv200:retrofit-html-converter:0.0.1'
+compile 'com.github.slashrootv200:retrofit-html-converter:0.0.2'
 ```
 ## Usage
 Service
